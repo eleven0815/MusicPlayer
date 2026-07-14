@@ -1,0 +1,35 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(548 498) rotate(90) scale(610)">
+      <stop stop-color="#173A2B"/>
+      <stop offset="0.5" stop-color="#07150F"/>
+      <stop offset="1" stop-color="#020705"/>
+    </radialGradient>
+    <linearGradient id="leaf" x1="270" y1="186" x2="723" y2="854" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0E5A38"/>
+      <stop offset="0.55" stop-color="#09261A"/>
+      <stop offset="1" stop-color="#010604"/>
+    </linearGradient>
+    <filter id="glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="13" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="33"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 0.08"/></feComponentTransfer></filter>
+  </defs>
+  <rect width="1024" height="1024" fill="url(#bg)"/>
+  <g fill="url(#leaf)">
+    <path d="M489 101C609 170 662 335 573 473C484 419 383 270 489 101Z"/>
+    <path d="M278 245C418 273 505 421 441 571C302 546 205 407 278 245Z"/>
+    <path d="M693 235C799 340 788 519 646 599C558 491 564 329 693 235Z"/>
+    <path d="M311 599C437 579 563 687 540 853C411 875 286 772 311 599Z"/>
+    <path d="M692 594C810 650 846 813 745 934C627 879 588 721 692 594Z"/>
+  </g>
+  <g fill="none" stroke="#49F09C" stroke-linecap="round" filter="url(#glow)">
+    <path d="M519 151C512 280 520 360 548 440M509 247L453 205M519 321L590 263" stroke-width="5"/>
+    <path d="M301 286C345 383 390 453 424 534M344 383L277 407M384 459L443 407" stroke-width="4"/>
+    <path d="M691 282C695 406 678 501 654 567M687 392L748 353M677 472L616 428" stroke-width="5"/>
+    <path d="M347 628C424 695 476 759 514 827M416 694L363 738M468 757L525 712" stroke-width="4"/>
+    <path d="M701 635C727 748 728 829 742 900M720 735L782 709M729 814L667 780" stroke-width="5"/>
+  </g>
+  <g fill="#7AF6B5" filter="url(#glow)">
+    <circle cx="157" cy="218" r="5"/><circle cx="223" cy="546" r="4"/><circle cx="379" cy="143" r="6"/><circle cx="478" cy="519" r="4"/><circle cx="596" cy="199" r="3"/><circle cx="774" cy="165" r="5"/><circle cx="861" cy="473" r="4"/><circle cx="824" cy="721" r="6"/><circle cx="581" cy="889" r="4"/><circle cx="218" cy="826" r="5"/>
+  </g>
+  <rect width="1024" height="1024" filter="url(#grain)" opacity="0.5"/>
+</svg>

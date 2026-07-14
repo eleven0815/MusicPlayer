@@ -1,0 +1,28 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="water" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(420 370) rotate(49) scale(770)">
+      <stop stop-color="#2D746B"/>
+      <stop offset="0.52" stop-color="#123D3B"/>
+      <stop offset="1" stop-color="#071C1D"/>
+    </radialGradient>
+    <filter id="rock"><feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="4" seed="22" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="38"/></filter>
+    <filter id="foam"><feGaussianBlur stdDeviation="5"/></filter>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="2" seed="19"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 0.08"/></feComponentTransfer></filter>
+  </defs>
+  <rect width="1024" height="1024" fill="url(#water)"/>
+  <g fill="#0A1212" filter="url(#rock)">
+    <path d="M-72 58C98 -36 299 24 346 171C381 279 280 362 111 336C-45 312 -135 193 -72 58Z"/>
+    <path d="M676 -42C824 -36 1010 78 1046 230C1076 359 944 420 804 356C661 291 566 139 676 -42Z"/>
+    <path d="M38 676C160 554 348 602 418 744C484 878 345 1053 150 1074C-36 1093 -83 833 38 676Z"/>
+    <path d="M649 634C788 531 1015 583 1091 744C1150 870 1010 1035 821 1070C633 1105 513 735 649 634Z"/>
+  </g>
+  <g fill="none" stroke="#DCE8E5" stroke-linecap="round" filter="url(#foam)">
+    <path d="M-37 394C128 427 238 373 382 405C531 438 544 546 688 557C805 566 883 503 1062 540" stroke-opacity="0.7" stroke-width="18"/>
+    <path d="M-23 420C129 451 245 404 380 438C505 469 552 580 688 588C829 597 920 533 1052 572" stroke-opacity="0.36" stroke-width="8"/>
+    <path d="M439 -27C432 112 471 221 448 340C423 469 345 516 356 642C367 767 455 841 440 1055" stroke-opacity="0.52" stroke-width="13"/>
+  </g>
+  <g fill="#A8CEC6" fill-opacity="0.5">
+    <circle cx="492" cy="473" r="10"/><circle cx="536" cy="529" r="6"/><circle cx="623" cy="579" r="8"/><circle cx="332" cy="418" r="5"/><circle cx="405" cy="359" r="7"/>
+  </g>
+  <rect width="1024" height="1024" filter="url(#grain)" opacity="0.45"/>
+</svg>

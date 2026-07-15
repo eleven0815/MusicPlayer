@@ -636,6 +636,15 @@ private fun EnrichmentReviewSheet(state: MusicUiState, viewModel: MusicViewModel
         Column(Modifier.padding(horizontal = 20.dp).padding(bottom = 28.dp)) {
             Text("待确认 · ${entries.size}", fontSize = 20.sp, fontWeight = FontWeight.Bold)
             Spacer(Modifier.height(12.dp))
+            if (entries.isNotEmpty()) {
+                TextButton(
+                    onClick = viewModel::acceptAllEnrichmentCandidates,
+                    contentPadding = androidx.compose.foundation.layout.PaddingValues(0.dp),
+                ) {
+                    Text("接受全部候选", color = BrandDeep)
+                }
+                Spacer(Modifier.height(4.dp))
+            }
             entries.forEach { item ->
                 val song = state.songs.firstOrNull { it.trackKey == item.trackKey } ?: return@forEach
                 Row(

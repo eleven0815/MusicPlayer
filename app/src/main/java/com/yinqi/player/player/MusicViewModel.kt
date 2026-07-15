@@ -731,6 +731,38 @@ class MusicViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
+    fun acceptAllEnrichmentCandidates() {
+        viewModelScope.launch {
+            var acceptedCount = 0
+            database.enrichmentDao().getAll().forEach { item ->
+                val hasArtworkCandidate = item.candidateArtworkUri != null
+                val hasLyricsCandidate = item.candidateLyricsRaw != null
+                if (!hasArtworkCandidate && !hasLyricsCandidate) return@forEach
+                database.enrichmentDao().upsert(
+                    item.copy(
+                        artworkUri = item.candidateArtworkUri ?: item.artworkUri,
+                        artworkSource = if (hasArtworkCandidate) item.candidateSource else item.artworkSource,
+                        artworkStatus = if (hasArtworkCandidate) EnrichmentStatus.Ready.name else item.artworkStatus,
+                        manualArtwork = item.manualArtwork || hasArtworkCandidate,
+                        lyricsRaw = item.candidateLyricsRaw ?: item.lyricsRaw,
+                        lyricsStatus = if (hasLyricsCandidate) EnrichmentStatus.Ready.name else item.lyricsStatus,
+                        manualLyrics = item.manualLyrics || hasLyricsCandidate,
+                        candidateArtworkUri = null,
+                        candidateLyricsRaw = null,
+                        candidateSource = null,
+                    ),
+                )
+                acceptedCount += listOf(hasArtworkCandidate, hasLyricsCandidate).count { it }
+            }
+            _state.update {
+                it.copy(
+                    showEnrichmentReview = false,
+                    snackbar = if (acceptedCount > 0) "已接受 $acceptedCount 项候选内容" else it.snackbar,
+                )
+            }
+        }
+    }
+
     override fun onCleared() {
         persistQueue()
         stopPositionUpdates()
